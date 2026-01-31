@@ -57,6 +57,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Authors
 
 - **Hex**
+  
 NOTE: If you contribute to the project your name will be added here
 
 ---
