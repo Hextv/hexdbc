@@ -1,0 +1,3 @@
+PySide6>=6.0.0
+QScintilla>=2.13.0
+pyinstaller
