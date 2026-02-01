@@ -146,7 +146,7 @@ class AdvancedSearchDialog(QDialog):
                 background-color: {COLORS['bg_tertiary']};
             }}
         """)
-        self.results_list.itemDoubleClicked.connect(self._on_result_clicked)
+        self.results_list.itemClicked.connect(self._on_result_clicked)
         layout.addWidget(self.results_list)
         
         # Status label
@@ -256,9 +256,12 @@ class AdvancedSearchDialog(QDialog):
         """Go to the clicked result line."""
         line_num = item.data(Qt.ItemDataRole.UserRole)
         if line_num and self.editor:
-            if hasattr(self.editor, 'setCursorPosition'):
+            if hasattr(self.editor, 'scroll_to_line'):
+                self.editor.scroll_to_line(line_num - 1)
+            elif hasattr(self.editor, 'setCursorPosition'):
                 self.editor.setCursorPosition(line_num - 1, 0)
-                self.editor.setFocus()
+            
+            self.editor.setFocus()
             self.goto_line.emit(line_num)
 
 
